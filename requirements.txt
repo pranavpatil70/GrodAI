@@ -2,4 +2,3 @@ flask
 sqlalchemy
 boto3
 flask_sqlalchemy
-os
