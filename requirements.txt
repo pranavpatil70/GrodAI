@@ -7,5 +7,6 @@ url_for
 session
 send_file
 boto3
-from flask_sqlalchemy import SQLAlchemy
+flask_sqlalchemy
+SQLAlchemy
 import os
