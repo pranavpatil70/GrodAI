@@ -1,0 +1,6 @@
+flask
+sqlalchemy
+render_template, request, redirect, url_for, session, send_file
+boto3
+from flask_sqlalchemy import SQLAlchemy
+import os
