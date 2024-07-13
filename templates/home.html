@@ -1,101 +1,533 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Tools for Creators</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,600">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fa;
-      background-image: url('doodle-art.png');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-    }
-    .semi-bold {
-      font-weight: 600;
-    }
-    .navbar {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-    }
-    .navbar-brand img {
-      height: 100%;
-      width: 100%;
-    }
-    .nav-link {
-      font-weight: 500;
-      color: #343a40;
-    }
-    .nav-link:hover {
-      color: #007bff;
-    }
-    .container {
-      max-width: 800px;
-    }
-    h1 {
-      font-weight: 700;
-      margin-top: 3rem;
-      margin-bottom: 2rem;
-    }
-    /* Add animation for doodle art */
-    @keyframes doodleAnimation {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    /* body {
-      animation: doodleAnimation 5s infinite;
-    } */
-  </style>
+    <meta charset="utf-8">
+    <title>Grod AI</title>
+    <meta name="google-site-verification" content="fYpfUysd3oQrBu751yIYPPQU4s_jJbKhfBbAB_nCNy0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Grod AI offers a suite of tools including text-to-speech AI for converting written text into natural-sounding speech, speech-to-files and resources extractor AI for extracting insights from audio content, a simple video editing tool for intuitive video production, and text-to-image AI for generating images from text, enhancing visual content creation.">
+    <meta name="keywords" content="Grod AI" />
+
+    <link href="/static/assets/css/homec3db.css?v=3.0" rel="stylesheet" type="text/css" media="all">
+
+    <link rel="icon" href="static/img/favi.ico" type="image/x-icon"/>
+
+    <script>
+        if (window !== top) top.location = window.location;
+    </script>
+
 </head>
+
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <!-- Logo -->
-      <a class="navbar-brand" href="#">
-        <img src="logo.png" alt="Logo" style="width: 120px;">
-      </a>
-      <!-- Toggler/collapsible Button -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Navbar links -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Blog</a>
-          </li>
-        </ul>
-        <!-- Sign Up and Login buttons -->
-        <div class="navbar-nav ml-auto">
-          <a class="nav-link" href="#">Sign Up</a>
-          <a class="nav-link" href="#">Login</a>
-        </div>
-      </div>
+<!-- 
+    <div class="loader">
+        <div class="loading-animation"></div>
+    </div> -->
+
+    <!-- NAVBAR -->
+    <div class="navbar-container bg-dark">  
+        <nav class="navbar navbar-expand-lg navbar-dark" data-sticky="top">
+            <div class="container">
+                <a class="navbar-brand fade-page" href="{{ url_for('home') }}">
+                    <img src="/static/assets/grod.png" alt="Grod AI" class="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 17C3 17.5523 3.44772 18 4 18H20C20.5523 18 21 17.5523 21 17V17C21 16.4477 20.5523 16 20 16H4C3.44772 16 3 16.4477 3 17V17ZM3 12C3 12.5523 3.44772 13 4 13H20C20.5523 13 21 12.5523 21 12V12C21 11.4477 20.5523 11 20 11H4C3.44772 11 3 11.4477 3 12V12ZM4 6C3.44772 6 3 6.44772 3 7V7C3 7.55228 3.44772 8 4 8H20C20.5523 8 21 7.55228 21 7V7C21 6.44772 20.5523 6 20 6H4Z" fill="#212529" />
+                    </svg>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end">
+                    <div class="py-2 py-lg-0">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="https://grodai.substack.com/" class="nav-link" rel="noopener">Newsletter</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" target="_blank" rel="nofollow noopener noreferrer">Pricing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="http://switch2ai.in/" class="nav-link" target="_blank" rel="nofollow noopener noreferrer">Blog</a>
+                            </li>
+                            <li class="nav-item nav-item--social">
+                                <a href="https://www.youtube.com/channel/UC8HboHTYM8RpQ_T6BEq9zDA" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">
+                                    <!-- <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon undefined">
+                                        <path d="M19.54 0c1.356 0 2.46 1.104 2.46 2.472v21.528l-2.58-2.28-1.452-1.344-1.536-1.428.636 2.22h-13.608c-1.356 0-2.46-1.104-2.46-2.472v-16.224c0-1.368 1.104-2.472 2.46-2.472h16.08zm-4.632 15.672c2.652-.084 3.672-1.824 3.672-1.824 0-3.864-1.728-6.996-1.728-6.996-1.728-1.296-3.372-1.26-3.372-1.26l-.168.192c2.04.624 2.988 1.524 2.988 1.524-1.248-.684-2.472-1.02-3.612-1.152-.864-.096-1.692-.072-2.424.024l-.204.024c-.42.036-1.44.192-2.724.756-.444.204-.708.348-.708.348s.996-.948 3.156-1.572l-.12-.144s-1.644-.036-3.372 1.26c0 0-1.728 3.132-1.728 6.996 0 0 1.008 1.74 3.66 1.824 0 0 .444-.54.804-.996-1.524-.456-2.1-1.416-2.1-1.416l.336.204.048.036.047.027.014.006.047.027c.3.168.6.3.876.408.492.192 1.08.384 1.764.516.9.168 1.956.228 3.108.012.564-.096 1.14-.264 1.74-.516.42-.156.888-.384 1.38-.708 0 0-.6.984-2.172 1.428.36.456.792.972.792.972zm-5.58-5.604c-.684 0-1.224.6-1.224 1.332 0 .732.552 1.332 1.224 1.332.684 0 1.224-.6 1.224-1.332.012-.732-.54-1.332-1.224-1.332zm4.38 0c-.684 0-1.224.6-1.224 1.332 0 .732.552 1.332 1.224 1.332.684 0 1.224-.6 1.224-1.332 0-.732-.54-1.332-1.224-1.332z" />
+                                    </svg> -->
+                                    <img src="/static/assets/img/yt3.png" class="icon undefined">
+                                </a>
+                            </li>
+                            <li class="nav-item nav-item--social">
+                                <a href="https://github.com/pranavpatil70/" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 32.58 31.77" class="icon undefined" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <title>GitHub icon
+                                        </title>
+                                        <path d="M16.29,0a16.29,16.29,0,0,0-5.15,31.75c.82.15,1.11-.36,1.11-.79s0-1.41,0-2.77C7.7,29.18,6.74,26,6.74,26a4.36,4.36,0,0,0-1.81-2.39c-1.47-1,.12-1,.12-1a3.43,3.43,0,0,1,2.49,1.68,3.48,3.48,0,0,0,4.74,1.36,3.46,3.46,0,0,1,1-2.18c-3.62-.41-7.42-1.81-7.42-8a6.3,6.3,0,0,1,1.67-4.37,5.94,5.94,0,0,1,.16-4.31s1.37-.44,4.48,1.67a15.41,15.41,0,0,1,8.16,0c3.11-2.11,4.47-1.67,4.47-1.67A5.91,5.91,0,0,1,25,11.07a6.3,6.3,0,0,1,1.67,4.37c0,6.26-3.81,7.63-7.44,8a3.85,3.85,0,0,1,1.11,3c0,2.18,0,3.94,0,4.47s.29.94,1.12.78A16.29,16.29,0,0,0,16.29,0Z" />
+                                        </path>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="{{ url_for('signup') }}" rel="nofollow noopener noreferrer" class="btn btn-outline-primary ml-lg-3" >Signup</a>
+                    <a href="{{ url_for('login') }}" rel="nofollow noopener noreferrer" class="btn btn-outline-primary ml-lg-3" >Login</a>
+
+                </div>
+            </div>
+        </nav>
     </div>
-  </nav>
 
-  <!-- Main Content -->
-  <div class="container">
-    <h1 class="text-center">AI Tools for Creators</h1>
-    <!-- Add your main content here -->
-  </div>
+    <!-- MAIN CONTENT -->
+    <section class="bg-dark pd-0" id="home">
 
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- HERO -->
+        <section class="hero" id="hero-scene">
+            <section class="move pd-0">
+                <div class="container">
+                    <section class="treatment pd-0">
+                        <!-- <img src="/static/assets/img/parachains/KUSAMA-GIFS_3.gif" alt="Image" /> -->
+                        <div class="typed-text-wrap">
+                            <span class="typed-text typed-text-hero d-block">
+                                Welcome to Grod AI
+                            </span>
+                            <a href="{{ url_for('signup') }}" class="hero-cta btn btn-outline-primary" style="margin-right: 0;">
+                                Convert your text to speech!
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </section>
+        
+
+        <section class="pd-0 o-hidden">
+            <!-- CONTENT CONTAINER -->
+            <section class="content bg-dark pd-0">
+                <div class="container">
+
+                    <!-- INTRO -->
+                    <section class="intro pd-section">
+                        <div class="wrap">
+                            <div class="wrap-left">
+                                <h2 class="h1 large">The
+                                    Only,<br>
+                                    Subscription
+                                    for<br>
+                                    Content 
+                                    Automation.</h2>
+                            </div>
+                        </div>
+                        <div class="wrap">
+                            <div class="wrap-right">
+
+                                <p>
+                                    This platform is all you are gonna need to create
+                                    a faceless content machine. From Scripts to speech, 
+                                    getting right copyright free content and many more
+                                    stay tuned for the future updates!
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="box-graphic parallax">
+                        <section class="pd-0 move">
+                            <img src="/static/assets/img/home-vortexs.svg" alt="Kusama Network" />
+                        </section>
+                    </section>
+
+
+                    <section class="genesis">
+                        <div class="wrap">
+                            <div class="wrap-left">
+                                <h2>Why we are creating GrodAI?</h2>
+                                <p>As an engineering student deeply entrenched in the world of AI and ML,
+                                    and as a content creator constantly exploring the latest technological 
+                                    advancements, I understand the pressing need for versatile and 
+                                    accessible AI tools. Grod AI isn't just another platform; 
+                                    it's a culmination of my passion for innovation, 
+                                    my dedication to making technology more inclusive, 
+                                    and my drive to empower creators like myself.
+                                </p>
+                                <p>Grod AI isn't just a platform; it's a testament to my belief in the power
+                                     of technology to drive positive change. It's a tool for creators, 
+                                     innovators, and dreamers alike—a catalyst for transformation in an
+                                     ever-evolving digital landscape.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="what-is-kusama parallax">
+                        <div class="wrap move">
+                            <div class="wrap-right box-outlines">
+                                <h2>What is GrodAI?</h2>
+                                <p class="mb-4">
+                                    Grod AI offers a suite of tools including text-to-speech AI for 
+                                    converting written text into natural-sounding speech, 
+                                    speech-to-files and resources extractor AI for extracting 
+                                    insights from audio content, a simple video editing tool for 
+                                    intuitive video production, and text-to-image AI for generating 
+                                    images from text, enhancing visual content creation.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="upcomings" class="launch-your-blockchain">
+                        <div class="section-hero sticky parallax">
+                            <div class="bg-img move">
+                                <img src="/static/assets/img/mesh_graph_1.png" alt="Upcoming in Grod AI" />
+                            </div>
+                            <h2 class="h1 large">
+                                Upcoming In<br />Grod AI
+                            </h2>
+                        </div>
+
+                        <div class="features wrap">
+                            <div class="wrap-right">
+                                <div class="feature">
+
+                                    <h3>
+                                        <div class="icon fast">
+                                        </div> Text-to-Speech
+                                    </h3>
+                                    <p>
+                                        This tool allows users to convert written text into natural-sounding speech.
+                                        Enhances accessibility by providing an audio alternative for written conten
+                                    </p>
+                                </div>
+                                <div class="feature">
+
+                                    <h3>
+                                        <div class="icon equals">
+                                        </div> Speech-to-Files and Resources Extractor
+                                    </h3>
+                                    <p>
+                                        Enables users to extract valuable insights from audio content.
+                                        Streamlines data gathering and analysis processes by converting speech into text files.
+                                    </p>
+                                </div>
+                                <div class="feature">
+
+                                    <h3>
+                                        <div class="icon technology">
+                                        </div> AI Video Editor
+                                    </h3>
+                                    <p>
+                                        Provides creators with intuitive editing capabilities for producing high-quality video content.
+                                        Offers essential editing features such as trimming, merging, and adding effects.
+                                    </p>
+                                </div>
+
+                                <div class="feature">
+
+                                    <h3>
+                                        <div class="icon life-saver">
+                                        </div> Text-to-Image AI
+                                    </h3>
+                                    <p>
+                                        Empowers users to generate images from text, unlocking creative possibilities for visual content creation.
+                                        Offers a versatile tool for designing graphics, illustrations, and visual aids.
+                                    </p>
+                                </div>
+
+                                <div class="feature">
+
+                                    <h3>
+                                        <div class="icon arrow-group">
+                                        </div>And much more...
+                                    </h3>
+                                    <p>
+                                        For the next 2 years Grod AI is my ultimate goal. There will be a lot of developments in
+                                        this.
+                                    </p>
+                                </div>
+
+                                <!-- <div class="feature">
+
+                                    <h3>
+                                        <div class="icon node">
+                                        </div>Valuable
+                                        Experience
+                                    </h3>
+                                    <p>
+                                        For teams looking to
+                                        move to Polkadot
+                                        after fine-tuning on
+                                        Kusama, begin
+                                        building your
+                                        community and brand
+                                        on Kusama before
+                                        deployment.
+                                    </p>
+                                </div> -->
+
+                            </div>
+                        </div>
+
+
+                    </section>
+
+
+                    <section class="ready-to-start"><a href="https://www.linkedin.com/in/thecuriouspranav/" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-outline-primary btn-blank">
+                            Wanna suggest somethin'? Connect now</a>
+                    </section>
+
+
+                    <!-- <section class="bring-x-to-your-project">
+                        <div class="section-hero sticky">
+
+                            <div class="bg-img" style="opacity:0">
+                                <img src="assets/img/mesh_graph_1.png" alt="Launch your custom blockchain" />
+                            </div>
+
+                            <h2 class="h1 large">
+                                Bring <br /><span class="typed-text typed-text-project"></span> to
+                                your project
+                            </h2>
+                        </div>
+
+                        <div class="features wrap">
+                            <div class="wrap-right">
+                                <div class="feature">
+                                    <h3>Innovation</h3>
+                                    <p>
+                                        Kusama is built by
+                                        the same teams as
+                                        Polkadot, using
+                                        nearly the same code
+                                        and tools. The
+                                        network places the
+                                        latest tech from
+                                        Parity Technologies
+                                        and Web3 Foundation
+                                        in the hands of
+                                        developers, even
+                                        before those
+                                        features make it to
+                                        Polkadot.
+                                    </p>
+                                </div>
+                                <div class="feature">
+                                    <h3>Scalability</h3>
+                                    <p>
+                                        Kusama’s sharded
+                                        blockchains and open
+                                        governance provide a
+                                        scalable and
+                                        future-proof
+                                        infrastructure for
+                                        businesses,
+                                        marketplaces and
+                                        applications to
+                                        deploy and mature.
+                                    </p>
+                                </div>
+                                <div class="feature">
+                                    <h3>Interoperability
+                                    </h3>
+                                    <p>
+                                        Kusama brings
+                                        multiple blockchains
+                                        together into one
+                                        sharded network,
+                                        freeing developers
+                                        from the siloes
+                                        created by legacy
+                                        blockchain networks.
+                                    </p>
+                                </div>
+                                <div class="feature">
+                                    <h3>Customization</h3>
+                                    <p>
+                                        With <a href="https://www.substrate.io/" target="_blank" rel="nofollow noopener noreferrer" style="color: var(--c-cyan)">Substrate</a>,
+                                        developers can build
+                                        their own
+                                        app-specific
+                                        blockchain and
+                                        connect it to
+                                        Kusama.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section> -->
+
+
+                    <section class="canary-network parallax">
+                        <div class="section-hero">
+                            <div class="bg-img move">
+                                <img src="/static/assets/img/mesh_graph_2.png" alt="Launch your custom blockchain" />
+                            </div>
+                            <h2 class="h1 large">
+                                Want to contribute<br />to our project
+                            </h2>
+
+                            <div class="wrap">
+                                <div class="wrap-right">
+                                    <p>if you want to join this mission of providing AI based services for content
+                                        creators, connect on LinkedIn now!<br>
+                                        You can also send email!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="ready-to-start"><a href="https://www.linkedin.com/in/thecuriouspranav/" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-outline-primary btn-blank">
+                        Contact Now!</a>
+                </section>
+
+    <!-- FOOTER -->
+    <!-- <section class="p-0">
+        <div class="container">
+            <div class="modal fade" id="subscribe-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <svg class="icon bg-dark" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.2426 6.34311L6.34309 16.2426C5.95257 16.6331 5.95257 17.2663 6.34309 17.6568C6.73362 18.0473 7.36678 18.0473 7.75731 17.6568L17.6568 7.75732C18.0473 7.36679 18.0473 6.73363 17.6568 6.34311C17.2663 5.95258 16.6331 5.95258 16.2426 6.34311Z" fill="#212529" />
+                                    <path d="M17.6568 16.2426L7.75734 6.34309C7.36681 5.95257 6.73365 5.95257 6.34313 6.34309C5.9526 6.73362 5.9526 7.36678 6.34313 7.75731L16.2426 17.6568C16.6331 18.0473 17.2663 18.0473 17.6568 17.6568C18.0474 17.2663 18.0474 16.6331 17.6568 16.2426Z" fill="#212529" />
+                                </svg>
+                            </button>
+                            <div class="m-xl-4 m-3">
+                                <!--[if lte IE 8]>
+                                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                                <![endif]-->
+                                <!-- <script charset="utf-8" type="text/javascript" src="../js.hsforms.net/forms/v2.js"></script>
+                                <script>
+                                    hbspt.forms.create({
+                                        portalId: "7592558",
+                                        formId: "f4e0ded8-88d1-450d-a490-10bd202050a1"
+                                    });
+                                </script> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+    <section class="bg-dark text-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-12 col-lg-4 mt-3 mt-lg-0 text-center">
+                    <h5 class="h1 large text-center">Stay in the loop</h5>
+                    <p>Subscribe to the newsletter to hear about random AI updates and events.</p>
+                    <button class="btn btn-outline-primary" data-toggle="modal" data-target="#subscribe-modal">
+                       <a href="https://grodai.substack.com/">Subscribe</a></button>
+                    <small class="text-muted form-text mt-3">To see
+                        how we use your information please see
+                        our <a href="privacy/index.html">privacy
+                            policy</a>.</small>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="pb-4 bg-dark text-light" id="footer">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-6 col-sm-3 col-lg-3 mt-3 mt-lg-0">
+                    <h5>Developers</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a href="https://guide.kusama.network/" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">Guide</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://github.com/paritytech/polkadot" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">GitHub</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- <div class="col-6 col-sm-3 col-lg-3 mt-3 mt-lg-0">
+                    <h5>Community</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a href="https://www.youtube.com/channel/UC8HboHTYM8RpQ_T6BEq9zDA" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">YouTube Channel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">Discord</a>
+                        </li>
+                    </ul>
+                </div> -->
+                <div class="col-6 col-sm-3 col-lg-3 mt-3 mt-lg-0">
+                    <h5>Social</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a href="https://www.youtube.com/channel/UC8HboHTYM8RpQ_T6BEq9zDA" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">YouTube</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://www.instagram.com/grodai.in/" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">Instagram</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">Discord</a>
+                    </ul>
+                </div>
+                <div class="col-6 col-sm-3 col-lg-3 mt-3 mt-lg-0">
+                    <h5>Info</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a href="#" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">Support</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">Careers</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col col-md-auto text-center">
+                    <small class="text-muted">&copy;
+                        <script type="text/JavaScript">document.write(new Date().getFullYear());</script>
+                        GrodAI · 
+                        <a href="legal-disclosures/index.html">Legal Disclosures ·</a>
+                        <a href="privacy/index.html">Privacy
+                            Policy</a> · <a href="disclaimer/index.html">Disclaimer</a>
+                    </small> 
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+    <a href="#" class="btn back-to-top btn-primary btn-round" data-smooth-scroll data-aos="fade-up" data-aos-anchor="section:last-of-type" data-aos-mirror="true" data-aos-once="false">
+        <svg class="icon" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <title>Icon For Arrow-up</title>
+            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <polygon points="0 0 24 0 24 24 0 24" opacity="0"></polygon>
+                <rect fill="#000000" x="11" y="5" width="2" height="14" rx="1"></rect>
+                <path d="M6.70710678,12.7071068 C6.31658249,13.0976311 5.68341751,13.0976311 5.29289322,12.7071068 C4.90236893,12.3165825 4.90236893,11.6834175 5.29289322,11.2928932 L11.2928932,5.29289322 C11.6714722,4.91431428 12.2810586,4.90106866 12.6757246,5.26284586 L18.6757246,10.7628459 C19.0828436,11.1360383 19.1103465,11.7686056 18.7371541,12.1757246 C18.3639617,12.5828436 17.7313944,12.6103465 17.3242754,12.2371541 L12.0300757,7.38413782 L6.70710678,12.7071068 Z" fill="#000000" fill-rule="nonzero"></path>
+            </g>
+        </svg>
+    </a>
+    
+
+    <!-- Required vendor scripts (Do not remove) -->
+    <script type="text/javascript" src="/static/js/scripts.min.js"></script>
+
+    <!-- CUSTOM scripts (Do not remove) -->
+    <script type="text/javascript" src="/static/js/home.min.js"></script>
+
+    <!-- Start of simple analytics script -->
+    <!-- <script async defer src="../apisa.kusama.network/latest.js"></script> 
+    <noscript>
+      <img
+        src="../apisa.kusama.network/noscript.gif"
+        alt=""
+        referrerpolicy="no-referrer-when-downgrade"
+      />
+    </noscript>
+    
+    UTM storage -->
+    <script type="text/javascript" src="/static/assets/js/utmProcessor.js"></script>
+    
+    <!-- PhishFort anti-scam -->
+    <img
+      class="c-transparent-pixel"
+      src="/static/img/spacer.gif"
+      referrerpolicy="no-referrer-when-downgrade"
+      style="opacity: 0; position: absolute; height: 0; z-index: -1"
+    />
+    
+
 </body>
 </html>

@@ -4,51 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Text to Speech</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,600">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,600"> -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="voiceSwitcher.js"></script>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fa;
-    }
+  <script src="/static/js/voiceSwitcher.js"></script>
+   <script>
+    if (window !== top) top.location = window.location;
+</script>
+<script type="module" src="/static/js/logout.js"></script><STYle>
+  body {
+    font-family: 'Space Mono', monospace;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    min-height: 100vh;
+    background: url("/static/img/KUSAMA-GIFS_3.gif");
+  }
     .semi-bold {
     font-weight: 600;
-    }
-    .navbar {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-    }
-
-    .navbar-brand img {
-      height: 100%;
-      width: 100%;
-    }
-
-    .nav-link {
-      font-weight: 500;
-      color: #343a40;
-    }
-
-    .nav-link:hover {
-      color: #007bff;
-    }
-
-    .container {
-      max-width: 800px;
     }
 
     h1 {
       font-weight: 700;
       margin-top: 3rem;
       margin-bottom: 2rem;
+      color: #fff;
     }
 
-    form {
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 0.25rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+  
+    .container{
+        max-width: 800px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: white;
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  
 
     textarea {
       resize: vertical;
@@ -60,16 +56,142 @@
 
     button[type="submit"] {
       font-weight: 500;
+      color: white;
     }
-  </style>
+/* 
+    button[type="submit"]:hover{
+        color: #ff0084;
+    } */
+
+
+/* navbar */
+    .navbar {
+  background-color: transparent !important;
+  padding: 1rem;
+}
+
+.navbar-brand img {
+  width: 120px;
+}
+
+.nav-link {
+  color: #fff !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ff5e57;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Responsive Styles */
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    background-color: #1a1a1a;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0;
+  }
+}
+
+/* footer */
+#footer {
+  background: transparent !important;
+  
+  padding: 3rem 0;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ff5e57;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.text-muted {
+  color: #a0a0a0 !important;
+}
+
+.text-muted a {
+  color: #ff5e57;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.text-muted a:hover {
+  color: #fff;
+}
+
+/* Responsive Styles */
+@media (max-width: 767.98px) {
+  .col-sm-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .col-sm-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+</STYle>
 </head>
 <body>
+
+  <!-- <div class="loader">
+    <div class="loading-animation"></div>
+  </div> -->
+
   <!-- Navbar -->
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <!-- Logo -->
-      <a class="navbar-brand" href="{{ url_for('index') }}">
-        <img src="static/img/Grod.png" alt="Logo" style="width: 120px;">
+      <a class="navbar-brand" href="{{ url_for('home') }}">
+        <img src="/static/img/grod2.png" alt="Logo" style="width: 120px;">
       </a>
       <!-- Toggler/collapsible Button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,9 +212,7 @@
         </ul>
         <!-- Sign Up and Login buttons -->
         <div class="navbar-nav ml-auto">
-          <a class="nav-link" href="{{ url_for('signup') }}">Sign Up</a>
-          <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-        </div>
+          <a class="nav-link" href="{{ url_for('home') }}" id="logout-btn">Logout</a>
       </div>
     </div>
   </nav>
@@ -136,12 +256,65 @@
             <option value="neural">Neural</option>
           </select>
         </div>
-      </div>
+      </div class="button">
       <button type="submit" class="btn btn-primary btn-block">Convert to Speech</button>
     </form>
   </div>
 
-  <!-- Bootstrap JS -->
+    <footer class="pb-4 bg-dark text-light" id="footer">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-6 col-sm-3 col-lg-3 mt-3 mt-lg-0">
+                    <h5>Developers</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a href="https://github.com/pranavpatil70/" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">Guide</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://github.com/pranavpatil70/" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">GitHub</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6 col-sm-3 col-lg-3 mt-3 mt-lg-0">
+                    <h5>Social</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a href="https://www.youtube.com/channel/UC8HboHTYM8RpQ_T6BEq9zDA" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">YouTube</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://www.instagram.com/grodai.in/" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">Instagram</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">Discord</a>
+                    </ul>
+                </div>
+                <div class="col-6 col-sm-3 col-lg-3 mt-3 mt-lg-0">
+                    <h5>Info</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a href="#" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">Support</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" target="_blank" rel="nofollow noopener noreferrer" class="nav-link">Careers</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col col-md-auto text-center">
+                    <small class="text-muted">&copy;
+                        <script type="text/JavaScript">document.write(new Date().getFullYear());</script>
+                        GrodAI · 
+                        <a href="legal-disclosures/index.html">Legal Disclosures ·</a>
+                        <a href="privacy/index.html">Privacy
+                            Policy</a> · <a href="disclaimer/index.html">Disclaimer</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
